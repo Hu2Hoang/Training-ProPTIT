@@ -1,0 +1,14 @@
+#i
+long long power_modulo(long long A, long long B, long long M)  
+{
+    if (B == 0)
+        return 1LL;
+
+    int half = power_modulo(A, B / 2LL, M) % M;
+    half = multiply_modulo(half, half, M);
+
+    if (B & 1)
+        return multiply_modulo(half, A, M);
+    else
+        return half;
+}
